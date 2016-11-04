@@ -31,7 +31,7 @@ def emailTo(mailbox, content):
     m_user = sender
     #Todo:
     #Rmember to remove this !
-    m_password = 'tongtong930215'
+    m_password = ''
     server = smtplib.SMTP(m_host)
     server.ehlo()
     server.starttls()

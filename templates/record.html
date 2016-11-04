@@ -1,0 +1,37 @@
+$def with(user)
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" />
+    <title>Record</title>
+</head>
+<body>
+    <p>Hi, $user . <strong><a href="/myrecord">All records</a></strong> &nbsp <a href="/logout">Logout</a></p>
+
+    <form method="POST">
+    <table>
+        <tbody>
+            <tr>
+                <td><label for="rundate">Date</label></td>
+                <td><input id="rundate" name="rundate" type="date"></td>
+            </tr>
+            <tr>
+                <td><label for="runtime">Runtime</label></td>
+                <td><input id="runtime" name="runtime" type="text" placeholder="1h30m4s"></td>
+            </tr>
+            <tr>
+                <td><label for="length">Length(/m)</label></td>
+                <td><input id="length" name="length" type="text"></td>
+            </tr>
+            <tr>
+                <td><label for="mood">Feeling</label></td>
+                <td><input id="mood" name="feeling" type="text"></td>
+            </tr>
+            <tr><td><input type="submit" value="Add it"/> </td></tr>
+        </tbody>
+    </table>
+    </form>
+</body>
+</html>

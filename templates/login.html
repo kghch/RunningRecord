@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" />
 </head>
 <body>
-    For login use.
+    <form method="POST">
+        <table>
+            <tbody>
+                <tr>
+                    <td><label for="username"> Username</label></td>
+                    <td><input type="text" id="username" name="username"/></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password</label></td>
+                    <td><input type="password" id="password" name="password"/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Login"/></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
 </body>
 </html>

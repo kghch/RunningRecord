@@ -1,0 +1,3 @@
+
+USERNAME = 'root'
+PASSWORD = '123456'

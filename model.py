@@ -1,7 +1,7 @@
 import settings
 import web
 
-db = web.database(dbn='mysql', db='forpy', user=settings.USERNAME, pw=settings.PASSWORD)
+db = web.database(dbn='mysql', db='running', user=settings.USERNAME, pw=settings.PASSWORD)
 
 class User:
     def all_users(self):

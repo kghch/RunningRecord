@@ -1,5 +1,7 @@
 import web
 import model
+import os
+import re
 
 urls = (
     '/', 'Index',
@@ -9,10 +11,12 @@ urls = (
     '/myrecord', 'Myrecord'
 )
 
-render = web.template.render('templates')
+render = web.template.render(os.path.join(os.path.dirname(__file__), 'templates/'))
+
+mobile_pattern = re.compile('android', re.IGNORECASE)
 
 class Index:
-    def GET(self):
+    def GET(self): 
         return render.index()
 
 class Login:
@@ -28,7 +32,7 @@ class Login:
         user = model.User().login(i.username, i.password)
         if user:
             # Login Success -> Record Page.
-            web.setcookie('uid', str(user), 30)
+            web.setcookie('uid', str(user), 3600)
             raise web.seeother('/record')
         else:
             return render.login_fail()
@@ -76,8 +80,13 @@ class Myrecord:
         else:
             return render.index()
 
+class MyApplication(web.application):
+    def run(self, port=8080, *middleware):
+        func = self.wsgifunc(*middleware)
+        return web.httpserver.runsimple(func, ('0.0.0.0', port))
 
-app = web.application(urls, globals())
+if __name__ == "__main__":
+    app = MyApplication(urls, globals())
+    app.run(port=9888)
 
-if __name__ == '__main__':
-    app.run()
+

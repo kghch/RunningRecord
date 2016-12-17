@@ -8,7 +8,8 @@ urls = (
     '/login', 'Login',
     '/logout', 'Logout',
     '/record', 'Record',
-    '/myrecord', 'Myrecord'
+    '/myrecord', 'Myrecord',
+    '/spiderdemo', 'Spiderdemo'
 )
 
 render = web.template.render(os.path.join(os.path.dirname(__file__), 'templates/'))
@@ -79,6 +80,10 @@ class Myrecord:
             return render.myrecord(uname, records)
         else:
             return render.index()
+
+class Spiderdemo:
+    def GET(self):
+        return render.spiderdemo()
 
 class MyApplication(web.application):
     def run(self, port=8080, *middleware):

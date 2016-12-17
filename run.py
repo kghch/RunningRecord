@@ -9,7 +9,8 @@ urls = (
     '/logout', 'Logout',
     '/record', 'Record',
     '/myrecord', 'Myrecord',
-    '/spiderdemo', 'Spiderdemo'
+    '/spiderdemo', 'Spiderdemo',
+    '/(\d+).html', 'Static'
 )
 
 render = web.template.render(os.path.join(os.path.dirname(__file__), 'templates/'))
@@ -84,6 +85,13 @@ class Myrecord:
 class Spiderdemo:
     def GET(self):
         return web.template.render(os.path.join(os.path.dirname(__file__), 'templates/kmlover')).index()
+
+class Static:
+    def GET(self, name):
+        with open(os.path.join(os.path.dirname(__file__), 'templates/kmlover/kmlover_answers/' + name + '.html'), 'r') as f:
+            html = f.read()
+            return render.empty(html)
+
 
 class MyApplication(web.application):
     def run(self, port=8080, *middleware):

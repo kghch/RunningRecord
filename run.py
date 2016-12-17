@@ -83,7 +83,7 @@ class Myrecord:
 
 class Spiderdemo:
     def GET(self):
-        return render.spiderdemo()
+        return web.template.render(os.path.join(os.path.dirname(__file__), 'templates/kmlover')).index()
 
 class MyApplication(web.application):
     def run(self, port=8080, *middleware):
